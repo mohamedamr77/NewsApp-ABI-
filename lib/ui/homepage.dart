@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news/widget/news_column.dart';
-
 import '../widget/debartment_box.dart';
 import '../widget/list_department.dart';
 import '../widget/list_news.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -37,37 +35,36 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-                 children: [
-                   SizedBox(
-                     height: 120,
-                     child: ListView.builder(
-                         itemBuilder: (context, index) => Department(
-                             image: listDepartment[index]["image"],
-                             text_Department: listDepartment[index]["name"],
-                         ),
-                         itemCount: listDepartment.length,
-                         scrollDirection: Axis.horizontal,
-                     ),
-                   ),
-                   SizedBox(height: 10,),
-                   ListView.separated(
-                       itemBuilder: (context, index) => News(
-                           image: listNews[index]["image"],
-                           textPrimary: listNews[index]["textPrimary"],
-                           textSecondary: listNews[index]["textSecondary"],
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: SizedBox(
+                       height: 120,
+                       child: ListView.builder(
+                           itemBuilder: (context, index) => Department(
+                               image: listDepartment[index]["image"],
+                               text_Department: listDepartment[index]["name"],
+                           ),
+                           itemCount: listDepartment.length,
+                           scrollDirection: Axis.horizontal,
                        ),
-                       separatorBuilder: (context, index) => SizedBox(height: 8,),
-                       itemCount: listDepartment.length,
-                     physics: NeverScrollableScrollPhysics(),
-                     shrinkWrap: true,
-                   ),
-                 ],
+                     ),
           ),
-        ),
-      ),
+          SliverToBoxAdapter(child: SizedBox(height: 10,)),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                (context, index) =>News(
+                    image:listNews[index]["image"] ,
+                    textPrimary: listNews[index]["textPrimary"],
+                    textSecondary:listNews[index]["textSecondary"],
+                ),
+                childCount: listNews.length,
+          ),
+          ),
+        ],
+        )
+    ),
     );
   }
 }

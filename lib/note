@@ -1,0 +1,48 @@
+how to display response in run ?
+1) add dio package
+2) make directory services
+3) put file name_service such in directory services  such as:
+                   import 'package:dio/dio.dart';
+                   class NewsService {
+                     final Dio dio;
+
+                     NewsService({required this.dio});
+
+                     void getGeneralNews() async {
+                       final response = await dio.get(
+                           'https://newsapi.org/v2/everything?apiKey=08433c8dda43458fa30826408cb8219e&q=bitcoin');
+                       print(response);
+                     }
+                   }
+4) put in class main :
+               final dio = Dio();
+                 NewsService requestNews =NewsService(dio: dio);
+                 requestNews.getNews()  ;
+
+
+
+            ----------------------------------------------------------------
+
+ example in asyanc and  await :
+ void main()async{
+      print(await MyAge());
+ }
+
+ Future<String> MyAge()async {
+     var age=await DelayedDisplayAge();
+     return "Myn Age is $age";
+ }
+  Future<int> DelayedDisplayAge()=>
+   Future.delayed(Duration(seconds: 2),()=> 21,);
+
+                          ----------------------------------------------------------------
+
+    import 'package:dio/dio.dart';
+
+                        final dio = Dio();
+
+                        void getHttp() async {
+                          final response = await dio.get('https://dart.dev');
+                          print(response);
+                        }
+
