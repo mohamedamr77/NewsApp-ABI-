@@ -5,8 +5,8 @@ import 'package:dio/dio.dart';
 void main() {
 
   final dio = Dio();
-    NewsService requestNews =NewsService(dio: dio);
-    requestNews.getBusinessNews(); //you can not write line 7,  8 and write NewsService(Dio()).getBusinessNews();
+  NewsService(dio: dio).getNews();
+                                           //you can not write line 7,  8 and write NewsService(Dio()).getBusinessNews();
     // Run the app
     runApp(MyApp());
 }

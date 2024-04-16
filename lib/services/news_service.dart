@@ -1,31 +1,33 @@
 import 'package:dio/dio.dart';
 import 'package:news/widget/articalmodel.dart';
-class NewsService {
-  final Dio dio;
-
+import 'package:news/widget/news_column.dart';
+import 'package:news/widget/soureModel.dart';
+class NewsService{
+  Dio dio;
   NewsService({required this.dio});
 
-  getBusinessNews()async {
+  void getNews() async {
+    final Response response = await dio.get(
+        'https://newsapi.org/v2/top-headlines?country=us&apiKey=08433c8dda43458fa30826408cb8219e');
 
-    Response response =await dio.get("https://newsapi.org/v2/top-headlines?apiKey=08433c8dda43458fa30826408cb8219e&country=eg&category=business");
+    Map<String, dynamic> jsonData = response.data;
 
-    Map<String,dynamic>  jsonData=response.data;
+    List<dynamic> articles = jsonData["articles"];
 
-    List<dynamic> articles=jsonData["articles"];
+    List<ArticleModel> articlesList = [];
 
-    List<ArticleModel> articlesList=[];
-
-    for (dynamic article in articles){
-
-       ArticleModel articleModel=ArticleModel(
-         image: article["urlToImage"],
-         title: article["title"],
-         description: article["description"],
-       );
-       articlesList.add(articleModel);
+    for (int i = 0; i < articles.length; i++) {
+      ArticleModel article = ArticleModel(
+        image: articles[i]["image"],
+        title: articles[i]["title"],
+        description: articles[i]["description"],
+          source: SourceModel(
+          id: articles[i]["source"]["id"],
+          name: articles[i]["source"]["name"],
+        )
+      );
+      articlesList.add(article);
     }
     print(articlesList);
   }
-
-
 }

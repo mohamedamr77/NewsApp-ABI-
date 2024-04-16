@@ -46,3 +46,30 @@ how to display response in run ?
                           print(response);
                         }
 
+import 'package:dio/dio.dart';
+import 'package:news/widget/articalmodel.dart';
+class NewsService{
+  Dio dio;
+    NewsService({required this.dio });
+
+  void getNews() async {
+    final Response response = await dio.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=08433c8dda43458fa30826408cb8219e');
+
+    Map<String, dynamic> jsonData = response.data;
+
+    List<dynamic> articles = jsonData["articles"];
+
+    List<ArticleModel> articlesList = [];
+
+    for (int i = 0; i < articles.length; i++) {
+      ArticleModel articleModel=ArticleModel(
+          image: articles[i]["image"],
+          title: articles[i]["title"],
+          description: articles[i]["description"],
+      );
+      articlesList.add(articleModel);
+    }
+
+    print(articlesList);
+  }
+}
