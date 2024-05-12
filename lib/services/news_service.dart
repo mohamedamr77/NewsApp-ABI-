@@ -1,12 +1,25 @@
 import 'package:dio/dio.dart';
 import 'package:news/widget/articalmodel.dart';
-import 'package:news/widget/news_column.dart';
 import 'package:news/widget/soureModel.dart';
 class NewsService{
-  Dio dio;
+  final Dio dio;
   NewsService({required this.dio});
+  void GetGeneralNews() async {
+    final response = await dio.get('https://newsapi.org/v2/everything?q=bitcoin&apiKey=08433c8dda43458fa30826408cb8219e');
+    print(response.data);
+  }
 
-  void getNews() async {
+  void GetSportsNews() async {
+    final response = await dio.get('https://newsapi.org/v2/everything?q=sport&apiKey=08433c8dda43458fa30826408cb8219e');
+    print(response.data);
+  }
+
+}
+
+
+
+
+/*
     final Response response = await dio.get(
         'https://newsapi.org/v2/top-headlines?country=us&apiKey=08433c8dda43458fa30826408cb8219e');
 
@@ -30,4 +43,4 @@ class NewsService{
     }
     print(articlesList);
   }
-}
+ */
