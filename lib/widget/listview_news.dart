@@ -35,13 +35,21 @@ class _NewsListViewState extends State<NewsListView> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.separated(
+    return
+      isLoading ?
+      SliverFillRemaining(
+        hasScrollBody: false,
+        child: Center(
+          child: CircularProgressIndicator()
+        ),
+      )
+          :
+      SliverList.separated(
       itemBuilder: (context, index) => News(
         articleModel: articles[index],
       ),
       itemCount: articles.length,
       separatorBuilder: (context, index) => SizedBox(height: 8,),
-    )
-    ;
+    );
   }
 }
