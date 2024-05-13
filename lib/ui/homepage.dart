@@ -4,6 +4,7 @@ import 'package:news/widget/news_column.dart';
 import '../widget/debartment_box.dart';
 import '../widget/list_department.dart';
 import '../widget/list_news.dart';
+import '../widget/listview_news.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -55,15 +56,7 @@ class HomePage extends StatelessWidget {
             SliverToBoxAdapter(
               child: SizedBox(height: 10,),
             ),
-            SliverList.separated(
-              itemBuilder: (context, index) => News(
-                image: listNews[index]["image"],
-                textPrimary: listNews[index]["textPrimary"],
-                textSecondary: listNews[index]["textSecondary"],
-              ),
-              itemCount: listDepartment.length,
-              separatorBuilder: (context, index) => SizedBox(height: 8,),
-            ),
+            NewsListView(),
           ],
         )
 

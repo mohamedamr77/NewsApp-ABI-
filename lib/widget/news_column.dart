@@ -1,29 +1,46 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'articalmodel.dart';
 
-class News extends StatelessWidget{
-  String image;
-  String textPrimary;
-  String textSecondary;
+class News extends StatelessWidget {
+  final ArticleModel? articleModel;
 
-  News({super.key,required this.image,required this.textPrimary,required this.textSecondary});
-
+  News({Key? key, required this.articleModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  Container(
+
+    if (articleModel == null) {
+      // Handle the case where articleModel is null
+      return Container(); // Return an empty container or placeholder widget
+    }
+
+    return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(left: 8,right: 8),
-      child:  Column(
+      margin: EdgeInsets.only(left: 8, right: 8),
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image(
-            image: AssetImage(image),
+
+          Image.network(
+            articleModel!.image ??"",
             fit: BoxFit.fill,
             height: 170,
             width: double.infinity,
+            // errorBuilder: (context, error, stackTrace) {
+            //   return Container(
+            //     width: 100,
+            //     height: 100,
+            //     color: Colors.grey, // Placeholder color or image
+            //     child: Center(
+            //       child: Text('Image Load Failed'),
+            //     ),
+            //   );
+            // },
           ),
-          SizedBox(height: 5,),
-          Text(textPrimary,
+
+
+          SizedBox(height: 5),
+          Text(
+            articleModel!.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.5,
@@ -31,9 +48,10 @@ class News extends StatelessWidget{
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(height: 5,),
-          Text(textSecondary,
-            style:TextStyle(
+          SizedBox(height: 5),
+          Text(
+            articleModel!.description ?? '',
+            style: TextStyle(
               color: Colors.grey,
             ),
             maxLines: 2,
@@ -43,5 +61,4 @@ class News extends StatelessWidget{
       ),
     );
   }
-
 }
