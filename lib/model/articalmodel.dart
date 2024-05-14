@@ -1,4 +1,4 @@
-import 'package:news/widget/soureModel.dart';
+import 'package:news/model/soureModel.dart';
 
 class ArticleModel {
   final String? image;
