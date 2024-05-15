@@ -125,3 +125,64 @@ class _NewsListViewState extends State<NewsListView> {
 
 
 */
+
+
+
+/*
+  List<ArticleModel> articles = [];
+
+  bool isLoading=true;
+
+  Future<void> GetNews() async{
+    if(widget.index==0)
+    {
+      articles=await NewsService(dio: Dio()).GetBusinessNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==1){
+      articles=await NewsService(dio: Dio()).GetEntertainmentNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==2){
+      articles=await NewsService(dio: Dio()).GetGeneralNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==3){
+      articles=await NewsService(dio: Dio()).GetHealthNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==4){
+      articles=await NewsService(dio: Dio()).GetScienceNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==5){
+      articles=await NewsService(dio: Dio()).GetSportsNews();
+      isLoading=false ;
+      setState(() {
+      });
+    }
+    else if(widget.index==6){
+      articles=await NewsService(dio: Dio()).GetTechnologyNews();
+      isLoading=false ;
+      setState(() {
+      });
+
+    }
+  }
+
+  void initState() {
+    GetNews();
+    super.initState();
+  }
+
+*/

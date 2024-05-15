@@ -1,18 +1,18 @@
+
 import 'package:flutter/material.dart';
-import 'package:news/core/colorapp.dart';
-import '../../../model/articalmodel.dart';
+import 'package:news/model/articalmodel.dart';
 
-class News extends StatelessWidget {
-  final ArticleModel? articleModel;
+import '../../core/colorapp.dart';
 
-  News({Key? key, required this.articleModel}) : super(key: key);
-
+class CategoryScreenItem extends StatelessWidget {
+  const CategoryScreenItem({super.key,required this.articleModelDepartment});
+  final ArticleModel? articleModelDepartment;
   @override
   Widget build(BuildContext context) {
-    if (articleModel == null ||
-        articleModel!.image == null ||
-        articleModel!.title == null ||
-        articleModel!.description == null
+    if (articleModelDepartment == null ||
+        articleModelDepartment!.image == null ||
+        articleModelDepartment!.title == null ||
+        articleModelDepartment!.description == null
     )
     {
       return Container();
@@ -25,14 +25,14 @@ class News extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.network(
-            articleModel!.image!,
+            articleModelDepartment!.image ?? '',
             fit: BoxFit.fill,
             height: 170,
             width: double.infinity,
           ),
           SizedBox(height: 5),
           Text(
-            articleModel!.title!,
+            articleModelDepartment!.title ?? '',
             style: TextStyle(
               color: ColorApp.blackColor,
               fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class News extends StatelessWidget {
           ),
           SizedBox(height: 5),
           Text(
-            articleModel!.description!,
+            articleModelDepartment!.description ?? '',
             style: TextStyle(
               color: ColorApp.greyColor,
             ),
@@ -54,5 +54,4 @@ class News extends StatelessWidget {
       ),
     );
   }
-
 }

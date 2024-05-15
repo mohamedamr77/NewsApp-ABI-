@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news/widget/appbar/appbar_widget.dart';
+import 'package:news/widget/categoryscreen_widget/categoryscreen_item.dart';
 
 import '../../core/colorapp.dart';
 import '../../model/articalmodel.dart';
@@ -13,7 +14,6 @@ class CategoryBody extends StatefulWidget {
   @override
   State<CategoryBody> createState() => _CategoryBodyState();
 }
-
 class _CategoryBodyState extends State<CategoryBody> {
 
   List<ArticleModel> articles = [];
@@ -77,42 +77,10 @@ class _CategoryBodyState extends State<CategoryBody> {
     return Scaffold(
       appBar: customAppbar,
       body:
+          isLoading? Center(child: CircularProgressIndicator(),)
+              :
       ListView.separated(
-        itemBuilder: (context, index) => Container(
-          width: double.infinity,
-          margin: EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.network(
-                articles[index].image ?? '',
-                fit: BoxFit.fill,
-                height: 170,
-                width: double.infinity,
-              ),
-              SizedBox(height: 5),
-              Text(
-                articles[index].title ?? '',
-                style: TextStyle(
-                  color: ColorApp.blackColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.5,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: 5),
-              Text(
-                articles[index].description ?? '',
-                style: TextStyle(
-                  color: ColorApp.greyColor,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
-        ),
+        itemBuilder: (context, index) => CategoryScreenItem(articleModelDepartment: articles[index]),
         itemCount: articles.length,
         separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10),
       ),
