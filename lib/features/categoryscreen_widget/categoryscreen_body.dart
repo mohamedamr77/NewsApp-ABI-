@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:news/core/colorapp.dart';
 import '../../model/articalmodel.dart';
 import '../../services/news_service.dart';
 import '../appbar/appbar_widget.dart';
@@ -75,6 +76,7 @@ class _CategoryBodyState extends State<CategoryBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorApp.whiteColor,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.08),
         child: CustomAppBar(leading:IconButton(
@@ -92,7 +94,6 @@ class _CategoryBodyState extends State<CategoryBody> {
         itemCount: articles.length,
         separatorBuilder: (BuildContext context, int index) => SizedBox(height: MediaQuery.of(context).size.height*0.02),
       ),
-
     );
   }
 }

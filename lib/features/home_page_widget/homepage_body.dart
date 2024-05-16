@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/colorapp.dart';
 import '../appbar/appbar_widget.dart';
 import 'department_widget/department_listview.dart';
 import 'news_widget/news_listView_builder.dart';
@@ -13,6 +14,7 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorApp.whiteColor,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.07),
           child: CustomAppBar(leading:null ,)
