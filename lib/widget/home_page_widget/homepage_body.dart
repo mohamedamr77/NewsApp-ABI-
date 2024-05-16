@@ -3,12 +3,12 @@ import '../appbar/appbar_widget.dart';
 import 'department_widget/department_listview.dart';
 import 'news_widget/news_listView_builder.dart';
 
-class CustomHomePage extends StatefulWidget {
+class CustomHomeScreen extends StatefulWidget {
   @override
-  State<CustomHomePage> createState() => _CustomHomePageState();
+  State<CustomHomeScreen> createState() => _CustomHomeScreenState();
 }
 
-class _CustomHomePageState extends State<CustomHomePage> {
+class _CustomHomeScreenState extends State<CustomHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
