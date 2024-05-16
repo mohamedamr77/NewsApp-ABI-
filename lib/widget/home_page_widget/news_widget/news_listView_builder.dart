@@ -26,7 +26,6 @@ class NewsListViewBuilder extends StatelessWidget {
             ));
           }
 
-
     },
       future:NewsService(dio: Dio()).GetNews() ,
     );
