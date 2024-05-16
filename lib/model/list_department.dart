@@ -16,20 +16,5 @@ List<DepartmentModel> listDepartment=[
   DepartmentModel(image: "assets/images/sports (1).png", name: TextApp.sportsText),
 
   DepartmentModel(image: "assets/images/technology.jpeg", name: TextApp.technologyText),
-  // {
-  //   "image": "assets/images/health.png" ,
-  //   "name":TextApp.healthText,
-  // },
-  // {
-  //   "image": "assets/images/science.png" ,
-  //   "name":TextApp.scienceText,
-  // },
-  // {
-  //   "image": "assets/images/sports (1).png" ,
-  //   "name":TextApp.sportsText,
-  // },
-  // {
-  //   "image": "assets/images/technology.jpeg" ,
-  //   "name":TextApp.technologyText,
-  // }
+
 ];

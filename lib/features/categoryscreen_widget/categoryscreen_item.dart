@@ -20,7 +20,6 @@ class CategoryScreenItem extends StatelessWidget {
     if (
         articleModelDepartment == null ||
         articleModelDepartment!.image == null ||
-        articleModelDepartment!.title == null ||
         articleModelDepartment!.description == null) {
       return Container();
     }
@@ -50,7 +49,7 @@ class CategoryScreenItem extends StatelessWidget {
 
             SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
-            Text(
+             Text(
               articleModelDepartment!.title.trim() ?? '',
               style: TextStyle(
                 color: ColorApp.blackColor,

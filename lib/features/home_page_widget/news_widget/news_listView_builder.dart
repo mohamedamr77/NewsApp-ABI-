@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../../../model/articalmodel.dart';
 import '../../../services/news_service.dart';
-import 'circular_progress/CircularProgressIndicator_item.dart';
 import 'listview_news.dart';
 
 class NewsListViewBuilder extends StatefulWidget {

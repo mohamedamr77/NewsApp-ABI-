@@ -16,7 +16,6 @@ class News extends StatelessWidget {
   Widget build(BuildContext context) {
     if (articleModel == null ||
         articleModel!.image == null ||
-        articleModel!.title == null ||
         articleModel!.description == null
     )
     {
@@ -48,7 +47,7 @@ class News extends StatelessWidget {
            ),
             SizedBox(height: MediaQuery.of(context).size.height*0.008),
             Text(
-              articleModel!.title!,
+              articleModel!.title,
               textDirection: containsEnglish(articleModel!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
               style: TextStyle(
                 color: ColorApp.blackColor,

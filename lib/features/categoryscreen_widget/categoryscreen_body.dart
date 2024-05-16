@@ -8,6 +8,7 @@ import 'categoryscreen_item.dart';
 
 //done mediaquery
 
+// ignore: must_be_immutable
 class CategoryBody extends StatefulWidget {
    CategoryBody({super.key,required this.index});
    int index;

@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/core/colorapp.dart';
 import '../../../model/list_department.dart';
 import '../../categoryscreen_widget/categoryscreen_body.dart';
 
 //done mediaquery
+// ignore: must_be_immutable
 class Department extends StatelessWidget{
   int index;
    Department({super.key,required this.index});

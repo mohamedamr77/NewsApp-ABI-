@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:news/model/articalmodel.dart';
-import 'package:news/model/resultsmodel.dart';
 import 'package:news/model/soureModel.dart';
 class NewsService{
 
