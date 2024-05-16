@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news/widget/appbar/appbar_widget.dart';
 import 'package:news/widget/categoryscreen_widget/categoryscreen_item.dart';
-
-import '../../core/colorapp.dart';
 import '../../model/articalmodel.dart';
 import '../../services/news_service.dart';
 
@@ -80,11 +78,10 @@ class _CategoryBodyState extends State<CategoryBody> {
           isLoading? Center(child: CircularProgressIndicator(),)
               :
       ListView.separated(
-        itemBuilder: (context, index) => CategoryScreenItem(articleModelDepartment: articles[index]),
+        itemBuilder: (context, index) =>  CategoryScreenItem(articleModelDepartment: articles[index]),
         itemCount: articles.length,
         separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10),
       ),
-
 
     );
   }

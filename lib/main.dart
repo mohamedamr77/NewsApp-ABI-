@@ -8,7 +8,7 @@ void main() {
 
   // final dio = Dio();
   // NewsService(dio: dio).getNews();
-    NewsService(dio: dio).GetBusinessNews();                              //you can not write line 7,  8 and write NewsService(Dio()).getBusinessNews();
+    NewsService(dio: dio).GetSportsNews();                              //you can not write line 7,  8 and write NewsService(Dio()).getBusinessNews();
     // Run the app
     runApp(MyApp());
 }

@@ -5,14 +5,14 @@ class ArticleModel {
   final String title;
   final String? content;
   final String? description;
-  final SourceModel source;
+  final SourceModel? source;
 
   ArticleModel({
     required this.image,
     required this.title,
     required this.description,
-    required this.source,
-    required this.content,
+     this.source,
+     this.content,
   });
 
   @override

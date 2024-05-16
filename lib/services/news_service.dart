@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news/model/articalmodel.dart';
+import 'package:news/model/resultsmodel.dart';
 import 'package:news/model/soureModel.dart';
 class NewsService{
 
@@ -179,30 +180,24 @@ class NewsService{
   }
 
   Future<List<ArticleModel>> GetSportsNews() async{
-    Response response =await dio.get("https://newsapi.org/v2/top-headlines?category=sports&apiKey=08433c8dda43458fa30826408cb8219e&country=us");
+    Response response =await dio.get("https://newsdata.io/api/1/news?country=eg&category=sports&apikey=pub_44321b0d1058db6fc2c529f138959bddaeea8");
 
     Map<String,dynamic> jsonData = response.data;
 
-    List<dynamic> articlesJson = jsonData["articles"];
+    List<dynamic> resultsJson = jsonData["results"];
 
-    List<ArticleModel> articlesList = [];
+    List<ArticleModel> resultsList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
+    for (int i = 0; i < resultsJson.length; i++) {
+      ArticleModel article= ArticleModel(
+          image:  resultsJson[i]["image_url"],
+        title: resultsJson[i]["title"],
+        description: resultsJson[i]["description"],
       );
-      articlesList.add(article);
+       resultsList.add(article);
     }
-
-    return articlesList;
-
+ print(resultsList);
+    return resultsList;
   }
 
   Future<List<ArticleModel>> GetTechnologyNews() async{

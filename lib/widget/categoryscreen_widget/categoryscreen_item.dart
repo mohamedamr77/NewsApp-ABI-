@@ -1,46 +1,53 @@
-
 import 'package:flutter/material.dart';
 import 'package:news/model/articalmodel.dart';
-
-import '../../core/colorapp.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../news_details/news_details_body.dart';
+import '../../core/colorapp.dart';
 
 class CategoryScreenItem extends StatelessWidget {
-  const CategoryScreenItem({super.key,required this.articleModelDepartment});
+  const CategoryScreenItem({Key? key, required this.articleModelDepartment}) : super(key: key);
+
   final ArticleModel? articleModelDepartment;
+
+  bool containsEnglish(String text) {
+    // Check if the text contains any English characters
+    return text.codeUnits.any((char) => char >= 65 && char <= 122);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (articleModelDepartment == null ||
         articleModelDepartment!.image == null ||
         articleModelDepartment!.title == null ||
-        articleModelDepartment!.description == null
-    )
-    {
+        articleModelDepartment!.description == null) {
       return Container();
     }
 
-    return  GestureDetector(
-      onTap: (){
+    return GestureDetector(
+      onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CustomNewsDetails(article: articleModelDepartment!,)),
+          MaterialPageRoute(builder: (context) => CustomNewsDetails(article: articleModelDepartment!)),
         );
       },
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(left: 8, right: 8),
+        margin: EdgeInsets.symmetric(horizontal: 8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              articleModelDepartment!.image ?? '',
+            CachedNetworkImage(
+              imageUrl: articleModelDepartment!.image ?? '',
               fit: BoxFit.fill,
               height: 170,
               width: double.infinity,
+              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
             SizedBox(height: 5),
             Text(
-              articleModelDepartment!.title ?? '',
+              articleModelDepartment!.title.trim() ?? '',
               style: TextStyle(
                 color: ColorApp.blackColor,
                 fontWeight: FontWeight.bold,
@@ -48,15 +55,17 @@ class CategoryScreenItem extends StatelessWidget {
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+              textDirection: containsEnglish(articleModelDepartment!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
             ),
             SizedBox(height: 5),
             Text(
-              articleModelDepartment!.description ?? '',
+              articleModelDepartment!.description?.trim() ?? '',
               style: TextStyle(
                 color: ColorApp.greyColor,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+              textDirection: containsEnglish(articleModelDepartment!.description ?? '') ? TextDirection.ltr : TextDirection.rtl,
             ),
           ],
         ),
