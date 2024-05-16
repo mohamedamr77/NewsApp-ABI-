@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:news/widget/appbar/appbar_widget.dart';
-import 'package:news/widget/categoryscreen_widget/categoryscreen_item.dart';
+
 import '../../model/articalmodel.dart';
 import '../../services/news_service.dart';
+import '../appbar/appbar_widget.dart';
+import 'categoryscreen_item.dart';
 
 class CategoryBody extends StatefulWidget {
    CategoryBody({super.key,required this.index});
@@ -73,7 +74,15 @@ class _CategoryBodyState extends State<CategoryBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar,
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.08),
+        child: CustomAppBar(leading:IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios,color: Colors.black,),
+        ) ,)
+      ),
       body:
           isLoading? Center(child: CircularProgressIndicator(),)
               :

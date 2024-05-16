@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/widget/home_page_widget/department_widget/debartment_item.dart';
-
 import '../../../model/list_department.dart';
+import 'debartment_item.dart';
 
 class DepartmentListView extends StatelessWidget {
   const DepartmentListView({super.key});

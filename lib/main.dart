@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:news/services/news_service.dart';
 import 'package:dio/dio.dart';
-import 'package:news/widget/news_details/news_details_body.dart';
 
-import 'widget/home_page_widget/homepage_body.dart';
+
+import 'features/home_page_widget/homepage_body.dart';
+
+
 void main() {
 
   // final dio = Dio();

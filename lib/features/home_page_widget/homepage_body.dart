@@ -13,7 +13,10 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar,
+      appBar: PreferredSize(
+          preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.08),
+          child: CustomAppBar(leading:null ,)
+      ),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CustomScrollView(

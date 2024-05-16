@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/core/colorapp.dart';
-import 'package:news/widget/news_details/news_details_body.dart';
 import '../../../model/articalmodel.dart';
+import '../../news_details/news_details_body.dart';
 
 class News extends StatelessWidget {
   final ArticleModel? articleModel;
