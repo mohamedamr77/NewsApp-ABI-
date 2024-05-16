@@ -5,37 +5,31 @@ import '../../../services/news_service.dart';
 import 'circular_progress/CircularProgressIndicator_item.dart';
 import 'listview_news.dart';
 
-class NewsListViewBuilder extends StatefulWidget {
+class NewsListViewBuilder extends StatelessWidget {
 
   const NewsListViewBuilder({super.key,});
 
   @override
-  State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
-}
-
-class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
-
-  List<ArticleModel> articles=[];
-
-  bool isLoading=true;
-
-  Future<void> GetNews() async{
-    articles=await NewsService(dio: Dio()).GetNews();
-    isLoading=false ;
-    setState(() {
-    });
-  }
-
-  void initState() {
-    GetNews();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return
-      isLoading?
-          CustomCircularProgressIndicator():
-          NewsListView(articles: articles,);
+
+    return FutureBuilder(
+      builder: (context,snapshot){
+          if(snapshot.hasData){
+            return NewsListView(articles: snapshot.data!);
+          }
+          else if(snapshot.hasError){
+            return SliverToBoxAdapter(child: Text("error please wait"));
+          }
+          else{
+            return SliverFillRemaining(child: CircularProgressIndicator(
+
+            ));
+          }
+
+
+    },
+      future:NewsService(dio: Dio()).GetNews() ,
+    );
+
   }
 }
