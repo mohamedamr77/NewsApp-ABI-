@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../model/list_department.dart';
 import 'debartment_item.dart';
 
+//done mediaquery
 class DepartmentListView extends StatelessWidget {
   const DepartmentListView({super.key});
 
@@ -9,7 +10,7 @@ class DepartmentListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  SliverToBoxAdapter(
       child: SizedBox(
-        height: 120,
+        height: MediaQuery.of(context).size.height*0.15,
         child: ListView.builder(
           itemBuilder: (context, index) => Department(
             index: index,

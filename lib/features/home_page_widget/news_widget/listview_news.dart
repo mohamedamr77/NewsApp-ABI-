@@ -13,7 +13,7 @@ class NewsListView extends StatelessWidget {
         articleModel: articles[index],
       ),
       itemCount: articles.length,
-      separatorBuilder: (context, index) => SizedBox(height: 8,),
+      separatorBuilder: (context, index) => SizedBox(height: MediaQuery.of(context).size.height*0.02,),
     );
   }
 }

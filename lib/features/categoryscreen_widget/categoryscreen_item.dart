@@ -3,7 +3,7 @@ import 'package:news/model/articalmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../news_details/news_details_body.dart';
 import '../../core/colorapp.dart';
-
+//done mediaquery
 class CategoryScreenItem extends StatelessWidget {
   const CategoryScreenItem({Key? key, required this.articleModelDepartment}) : super(key: key);
 
@@ -16,7 +16,9 @@ class CategoryScreenItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (articleModelDepartment == null ||
+
+    if (
+        articleModelDepartment == null ||
         articleModelDepartment!.image == null ||
         articleModelDepartment!.title == null ||
         articleModelDepartment!.description == null) {
@@ -32,7 +34,7 @@ class CategoryScreenItem extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*0.013),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,12 +42,14 @@ class CategoryScreenItem extends StatelessWidget {
             CachedNetworkImage(
               imageUrl: articleModelDepartment!.image ?? '',
               fit: BoxFit.fill,
-              height: 170,
+              height: MediaQuery.of(context).size.height*0.22,
               width: double.infinity,
               placeholder: (context, url) => Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
-            SizedBox(height: 5),
+
+            SizedBox(height: MediaQuery.of(context).size.height*0.01),
+
             Text(
               articleModelDepartment!.title.trim() ?? '',
               style: TextStyle(

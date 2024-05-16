@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news/core/colorapp.dart';
 import '../../../model/articalmodel.dart';
 import '../../news_details/news_details_body.dart';
-
+//done mediaquery
 class News extends StatelessWidget {
   final ArticleModel? articleModel;
 
@@ -38,21 +38,15 @@ class News extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            /*
-            articleModel!.image!,
-              fit: BoxFit.fill,
-              height: 170,
-              width: double.infinity,
-             */
            CachedNetworkImage(imageUrl: articleModel!.image!,
              fit: BoxFit.fill,
-             height: 170,
+             height: MediaQuery.of(context).size.height*0.23,
              width: double.infinity,
              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
              errorWidget: (context, url, error) => Icon(Icons.error),
 
            ),
-            SizedBox(height: 5),
+            SizedBox(height: MediaQuery.of(context).size.height*0.008),
             Text(
               articleModel!.title!,
               textDirection: containsEnglish(articleModel!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
@@ -64,7 +58,7 @@ class News extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: 5),
+            SizedBox(height: MediaQuery.of(context).size.height*0.005),
             Text(
               articleModel!.description!,
               textDirection: containsEnglish(articleModel!.description ?? '') ? TextDirection.ltr : TextDirection.rtl,

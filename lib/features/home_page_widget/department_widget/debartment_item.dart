@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/core/colorapp.dart';
-
 import '../../../model/list_department.dart';
 import '../../categoryscreen_widget/categoryscreen_body.dart';
 
+//done mediaquery
 class Department extends StatelessWidget{
   int index;
    Department({super.key,required this.index});
@@ -16,12 +16,15 @@ class Department extends StatelessWidget{
         Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryBody(index: index,),));
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height*0.01,
+          horizontal: MediaQuery.of(context).size.width*0.01,
+        ),
         child: Container(
-          height: 115,
-          width: 170,
+          height: MediaQuery.of(context).size.height*0.2,
+          width: MediaQuery.of(context).size.width*0.44,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(MediaQuery.of(context).size.height*0.02),
             image: DecorationImage(
               image: AssetImage(listDepartment[index].image),
               fit: BoxFit.cover,

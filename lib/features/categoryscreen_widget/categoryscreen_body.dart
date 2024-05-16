@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
 import '../../model/articalmodel.dart';
 import '../../services/news_service.dart';
 import '../appbar/appbar_widget.dart';
 import 'categoryscreen_item.dart';
+
+//done mediaquery
 
 class CategoryBody extends StatefulWidget {
    CategoryBody({super.key,required this.index});
@@ -89,7 +90,7 @@ class _CategoryBodyState extends State<CategoryBody> {
       ListView.separated(
         itemBuilder: (context, index) =>  CategoryScreenItem(articleModelDepartment: articles[index]),
         itemCount: articles.length,
-        separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10),
+        separatorBuilder: (BuildContext context, int index) => SizedBox(height: MediaQuery.of(context).size.height*0.02),
       ),
 
     );

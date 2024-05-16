@@ -14,7 +14,7 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.08),
+          preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.07),
           child: CustomAppBar(leading:null ,)
       ),
       body: Padding(
@@ -25,7 +25,7 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
               DepartmentListView(),
 
               SliverToBoxAdapter(
-                child: SizedBox(height: 10,),
+                child: SizedBox(height: MediaQuery.of(context).size.height*0.02,),
               ),
 
               NewsListViewBuilder(),
