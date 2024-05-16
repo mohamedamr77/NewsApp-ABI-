@@ -12,7 +12,7 @@ class NewsListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return FutureBuildegr(
+    return FutureBuilder(
       builder: (context,snapshot){
           if(snapshot.hasData){
             return NewsListView(articles: snapshot.data!);
