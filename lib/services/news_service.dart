@@ -19,20 +19,10 @@ class NewsService{
 
       List<ArticleModel> articlesList = [];
 
-      for (int i = 0; i < articlesJson.length; i++) {
-        ArticleModel article = ArticleModel(
-          image: articlesJson[i]["urlToImage"],
-          title: articlesJson[i]["title"],
-          description: articlesJson[i]["description"],
-          content: articlesJson[i]["content"],
-          source: SourceModel(
-            id: articlesJson[i]["source"]["id"],
-            name: articlesJson[i]["source"]["name"],
-          ),
-        );
-        articlesList.add(article);
+      for(var article in articlesJson){
+        ArticleModel articleModel=ArticleModel.fromJson(article);
+        articlesList.add(articleModel);
       }
-
       return articlesList;
     } catch (e) {
       // Handle the error here
@@ -52,22 +42,11 @@ class NewsService{
 
     List<ArticleModel> articlesList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
-
   }
 
   Future<List<ArticleModel>> GetEntertainmentNews() async{
@@ -79,22 +58,11 @@ class NewsService{
 
     List<ArticleModel> articlesList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
-
   }
 
   Future<List<ArticleModel>> GetGeneralNews() async{
@@ -106,22 +74,11 @@ class NewsService{
 
     List<ArticleModel> articlesList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
-
   }
 
   Future<List<ArticleModel>> GetHealthNews() async{
@@ -133,20 +90,10 @@ class NewsService{
 
     List<ArticleModel> articlesList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
 
   }
@@ -159,23 +106,11 @@ class NewsService{
     List<dynamic> articlesJson = jsonData["articles"];
 
     List<ArticleModel> articlesList = [];
-
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
-
   }
 
   Future<List<ArticleModel>> GetSportsNews() async{
@@ -190,7 +125,7 @@ class NewsService{
     for (int i = 0; i < resultsJson.length; i++) {
       ArticleModel article= ArticleModel(
           image:  resultsJson[i]["image_url"],
-        title: resultsJson[i]["title"],
+        title:     resultsJson[i]["title"],
         description: resultsJson[i]["description"],
       );
        resultsList.add(article);
@@ -208,22 +143,11 @@ class NewsService{
 
     List<ArticleModel> articlesList = [];
 
-    for (int i = 0; i < articlesJson.length; i++) {
-      ArticleModel article=ArticleModel(
-        image: articlesJson[i]["urlToImage"],
-        title: articlesJson[i]["title"],
-        description: articlesJson[i]["description"],
-        content: articlesJson[i]["content"],
-        source: SourceModel(
-          id: articlesJson[i]["source"]["id"],
-          name: articlesJson[i]["source"]["name"],
-        ),
-      );
-      articlesList.add(article);
+    for(var article in articlesJson){
+      ArticleModel articleModel=ArticleModel.fromJson(article);
+      articlesList.add(articleModel);
     }
-
     return articlesList;
-
   }
 
 }

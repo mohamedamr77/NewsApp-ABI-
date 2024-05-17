@@ -50,7 +50,7 @@ class CategoryScreenItem extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
              Text(
-              articleModelDepartment!.title.trim() ?? '',
+              articleModelDepartment!.title?.trim() ?? '',
               style: TextStyle(
                 color: ColorApp.blackColor,
                 fontWeight: FontWeight.bold,
