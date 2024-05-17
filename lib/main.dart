@@ -16,13 +16,25 @@ void main() {
 }
 final dio = Dio();
 
-
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
           home: CustomHomeScreen(),
-       debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
+
+      // theme: ThemeData(
+      //   brightness: Brightness.light,
+      //
+      // ),
+      //
+      // darkTheme: ThemeData(
+      //   brightness: Brightness.dark,
+      //
+      // ),
+      //
+      // themeMode: ThemeMode.system,
+
     );
   }
 

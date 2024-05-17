@@ -50,7 +50,7 @@ class News extends StatelessWidget {
               articleModel!.title,
               textDirection: containsEnglish(articleModel!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
               style: TextStyle(
-                color: ColorApp.blackColor,
+                // color: ColorApp.blackColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.5,
               ),

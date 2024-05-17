@@ -77,7 +77,8 @@ class _CategoryBodyState extends State<CategoryBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorApp.whiteColor,
+      //backgroundColor: ColorApp.whiteColor,
+
       appBar: PreferredSize(
         preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.08),
         child: CustomAppBar(leading:IconButton(

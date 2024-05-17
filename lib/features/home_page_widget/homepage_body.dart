@@ -14,7 +14,7 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorApp.whiteColor,
+      //backgroundColor: ColorApp.whiteColor,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity,MediaQuery.of(context).size.height*0.07),
           child: CustomAppBar(leading:null ,)

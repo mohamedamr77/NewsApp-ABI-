@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
 import '../../core/TextApp.dart';
 import '../../core/colorapp.dart';
 //done
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget {
    CustomAppBar({super.key,required this.leading});
    Widget? leading;
+
+   @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorApp.whiteColor,
+     backgroundColor: ColorApp.whiteColor,
       elevation: 0,
-      leading:leading ,
+      leading:widget.leading ,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(TextApp.newsText,
             style: TextStyle(
-              color:ColorApp.blackColor,
+              //color:ColorApp.blackColor,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -29,8 +36,22 @@ class CustomAppBar extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+
         ],
       ),
+      actions: [
+        Icon(Icons.lightbulb_outline ,
+        color: Colors.yellow,
+        ),
+
+      ],
+
     );
   }
 }
+/*
+ GFToggle(onChanged: (value){},
+              value: true,
+             type:GFToggleType.ios,
+            ),
+ */
