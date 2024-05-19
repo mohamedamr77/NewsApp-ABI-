@@ -49,9 +49,3 @@ class _CustomAppBarState extends State<CustomAppBar> {
     );
   }
 }
-/*
- GFToggle(onChanged: (value){},
-              value: true,
-             type:GFToggleType.ios,
-            ),
- */

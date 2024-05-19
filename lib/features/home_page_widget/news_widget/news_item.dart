@@ -1,22 +1,40 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/core/colorapp.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../../model/articalmodel.dart';
 import '../../news_details/news_details_body.dart';
 //done mediaquery
-class News extends StatelessWidget {
+class News extends StatefulWidget {
   final ArticleModel? articleModel;
 
   News({Key? key, required this.articleModel}) : super(key: key);
+
+  @override
+  State<News> createState() => _NewsState();
+}
+
+class _NewsState extends State<News> {
+  late final WebViewController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = WebViewController()
+      ..loadRequest(
+        Uri.parse(widget.articleModel!.url??""),
+      );
+  }
   bool containsEnglish(String text) {
     // Check if the text contains any English characters
     return text.codeUnits.any((char) => char >= 65 && char <= 122);
   }
+
   @override
   Widget build(BuildContext context) {
-    if (articleModel == null ||
-        articleModel!.image == null ||
-        articleModel!.description == null
+    if (widget.articleModel == null ||
+        widget.articleModel!.image == null ||
+        widget.articleModel!.description == null
     )
     {
       return Container();
@@ -27,7 +45,7 @@ class News extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CustomNewsDetails(article: articleModel!),
+            builder: (context) => WebViewWidget(controller: controller),
           ),
         );
       },
@@ -37,7 +55,7 @@ class News extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-           CachedNetworkImage(imageUrl: articleModel!.image!,
+           CachedNetworkImage(imageUrl: widget.articleModel!.image!,
              fit: BoxFit.fill,
              height: MediaQuery.of(context).size.height*0.23,
              width: double.infinity,
@@ -47,8 +65,8 @@ class News extends StatelessWidget {
            ),
             SizedBox(height: MediaQuery.of(context).size.height*0.008),
             Text(
-              articleModel!.title??"",
-              textDirection: containsEnglish(articleModel!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
+              widget.articleModel!.title??"",
+              textDirection: containsEnglish(widget.articleModel!.title ?? '') ? TextDirection.ltr : TextDirection.rtl,
               style: TextStyle(
                 // color: ColorApp.blackColor,
                 fontWeight: FontWeight.bold,
@@ -59,8 +77,8 @@ class News extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height*0.005),
             Text(
-              articleModel!.description!,
-              textDirection: containsEnglish(articleModel!.description ?? '') ? TextDirection.ltr : TextDirection.rtl,
+              widget.articleModel!.description!,
+              textDirection: containsEnglish(widget.articleModel!.description ?? '') ? TextDirection.ltr : TextDirection.rtl,
               style: TextStyle(
                 color: ColorApp.greyColor,
               ),
@@ -72,5 +90,4 @@ class News extends StatelessWidget {
       ),
     );
   }
-
 }
