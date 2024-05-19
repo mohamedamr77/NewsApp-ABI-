@@ -5,7 +5,7 @@ import 'package:news/model/soureModel.dart';
 class ArticleModel {
    final String? image;
    final String? title;
-   final String? content;
+  final String? url;
    final String? description;
    final SourceModel? source;
 
@@ -14,7 +14,8 @@ class ArticleModel {
     required this.title,
     required this.description,
      this.source,
-     this.content,});
+    required this.url,
+  });
          /*
          articlesJson[i]["urlToImage"],
         title:      articlesJson[i]["title"],
@@ -26,7 +27,7 @@ class ArticleModel {
       image:      json["urlToImage"],
       title:      json["title"],
       description: json["description"],
-      content: json["content"],
+       url:  json["url"],
       source: SourceModel(
         id: json["source"]["id"],
         name: json["source"]["name"],

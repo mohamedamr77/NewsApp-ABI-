@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:news/model/articalmodel.dart';
-import 'package:news/model/soureModel.dart';
 class NewsService{
 
   final Dio dio;
@@ -127,6 +126,7 @@ class NewsService{
           image:  resultsJson[i]["image_url"],
         title:     resultsJson[i]["title"],
         description: resultsJson[i]["description"],
+        url: resultsJson[i]["source_url"],
       );
        resultsList.add(article);
     }
